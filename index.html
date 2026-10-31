@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Menu Visuel — Al Andalous Grill&co | Hay Riad & Harhoura</title>
+  <meta name="description" content="Carte et menu visuel d'Al Andalous Grill&co à Prestigia Hay Riad et Harhoura. Viandes 100% fraîches de notre Boucherie Al Andalous depuis 1970.">
+  
+  <!-- Script Anti-FOUC : Détection immédiate Jour / Nuit selon l'heure locale -->
+  <script>
+    (function() {
+      try {
+        const savedTheme = localStorage.getItem('alandalous_theme');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+          const hour = new Date().getHours();
+          // Mode Jour entre 07h00 et 19h30, Mode Nuit de 19h30 à 07h00
+          const isDaytime = hour >= 7 && hour < 19.5;
+          document.documentElement.setAttribute('data-theme', isDaytime ? 'light' : 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Typographie Gastronomique Haut de Gamme -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- EN-TÊTE SIGNATURE AVEC IMAGE DE FOND IMMERSIVE & BASCULE JOUR/NUIT -->
+  <header class="header-hero">
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      
+      <!-- BARRE SUPÉRIEURE : SÉLECTEUR D'AMBIANCE JOUR/NUIT -->
+      <div class="top-nav-bar">
+        <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Changer l'ambiance lumineuse" title="Bascule Jour / Nuit">
+          <span id="theme-icon" class="theme-icon"></span>
+          <span id="theme-label" class="theme-label">Ambiance</span>
+        </button>
+      </div>
+
+      <!-- LOGO OFFICIEL DU RESTAURANT -->
+      <div class="brand-logo-container">
+        <img src="assets/logo/logo.jpg" alt="AL ANDALOUS Grill&co" class="brand-logo-img">
+      </div>
+
+      <div class="brand-tagline">
+        Maison Fondée en 1970 &bull; Steak House & Boucherie
+      </div>
+
+      <!-- SÉLECTEUR D'ÉTABLISSEMENT -->
+      <div class="location-selector" role="tablist">
+        <button class="loc-btn active" data-loc="prestigia">
+          Prestigia &mdash; Hay Riad
+        </button>
+        <button class="loc-btn" data-loc="harhoura">
+          Harhoura &mdash; Bord de Mer
+        </button>
+      </div>
+
+      <!-- COORDONNÉES DE L'ÉTABLISSEMENT SÉLECTIONNÉ -->
+      <div class="active-location-card">
+        <div class="loc-info">
+          <div class="loc-name" id="loc-name">Prestigia — Hay Riad</div>
+          <div class="loc-address" id="loc-address">Avenue Essanaoubar, Place Al Masjid 'Sayf', Rabat</div>
+        </div>
+        <div class="loc-actions">
+          <a href="#" class="action-icon-btn" id="loc-phone-link" title="Téléphoner" aria-label="Téléphoner">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </a>
+          <a href="#" class="action-icon-btn" id="loc-maps-link" target="_blank" rel="noopener" title="Itinéraire Google Maps" aria-label="Ouvrir Maps">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+              <line x1="8" y1="2" x2="8" y2="18"></line>
+              <line x1="16" y1="6" x2="16" y2="22"></line>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BANDEAU PASSAGE BOUCHERIE AL ANDALOUS -->
+  <div style="padding: 0 16px;">
+    <aside class="boucherie-banner">
+      <div class="boucherie-text">
+        <div class="boucherie-tag">Circuit Court &bull; Viandes d'Exception</div>
+        <div class="boucherie-title">Boucherie Al Andalous</div>
+        <div class="boucherie-sub">Toutes nos viandes proviennent de notre boucherie familiale depuis 1970. Commandez également vos pièces fraîches à emporter.</div>
+      </div>
+      <a href="https://boucheriealandalous.com/" target="_blank" rel="noopener" class="boucherie-btn" id="boucherie-link-btn">
+        Découvrir
+      </a>
+    </aside>
+  </div>
+
+  <!-- BARRE DE RECHERCHE RAPIDE -->
+  <div class="search-container">
+    <div class="search-box">
+      <span class="search-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </span>
+      <input type="text" id="search-input" class="search-input" placeholder="Rechercher une pièce, un plat, un dessert..." autocomplete="off">
+      <button id="search-clear" class="search-clear" aria-label="Effacer">✕</button>
+    </div>
+  </div>
+
+  <!-- ONGLETS DE CATÉGORIES STICKY (DESIGN ÉPURÉ ET SANS ÉMOJIS) -->
+  <nav class="categories-wrapper" aria-label="Catégories du menu">
+    <div class="categories-scroll" id="categories-scroll">
+      <!-- Les catégories s'injectent ici dynamiquement dans l'ordre logique -->
+    </div>
+  </nav>
+
+  <!-- LISTE DES PLATS -->
+  <main class="menu-section">
+    <div id="dishes-container">
+      <!-- Les cartes de plats s'injectent ici dynamiquement -->
+    </div>
+  </main>
+
+  <!-- MODALE ZOOM PHOTO (LIGHTBOX PLEIN ÉCRAN) -->
+  <div id="lightbox-modal" class="lightbox-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="lightbox-content">
+      <button id="lightbox-close" class="lightbox-close" aria-label="Fermer la photo">✕</button>
+      <img id="lightbox-img" class="lightbox-img" src="" alt="Agrandissement photo">
+      <div class="lightbox-caption">
+        <h3 id="lightbox-title" class="lightbox-title"></h3>
+        <span id="lightbox-price" class="lightbox-price"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION (WI-FI / INFOS) -->
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <span id="toast-text"></span>
+  </div>
+
+  <!-- BARRE D'ACTIONS FLOTTANTE EN BAS DE L'ÉCRAN (ICÔNES VECTORIELLES) -->
+  <footer class="bottom-bar">
+    <div class="bottom-bar-inner">
+      <button class="bar-btn highlight" id="loc-wifi-btn" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+          <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+          <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+          <line x1="12" y1="20" x2="12.01" y2="20"></line>
+        </svg>
+        <span>Wi-Fi Table</span>
+      </button>
+      <a href="https://www.instagram.com/grilladealandalous/" target="_blank" rel="noopener" class="bar-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+        <span>Instagram</span>
+      </a>
+      <a href="https://boucheriealandalous.com/" target="_blank" rel="noopener" class="bar-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span>Boucherie</span>
+      </a>
+      <a href="https://maps.google.com/?q=Grillade+Al+Andalous" target="_blank" rel="noopener" class="bar-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        </svg>
+        <span>Avis Google</span>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/menu-data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

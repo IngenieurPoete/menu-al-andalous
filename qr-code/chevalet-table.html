@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gabarit Chevalets & Stickers — Grillade Al Andalous</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #0f1115;
+      color: #fff;
+      padding: 30px 20px;
+    }
+
+    .toolbar {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      text-align: center;
+      background: #1c202a;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .toolbar input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #334155;
+      background: #0f1115;
+      color: #fff;
+      font-size: 14px;
+    }
+    .toolbar button {
+      background: #f59e0b;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .table-standee {
+      background: #171a21;
+      border: 2px solid #f59e0b;
+      border-radius: 20px;
+      width: 280px;
+      padding: 24px 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      page-break-inside: avoid;
+    }
+
+    .standee-badge {
+      display: inline-block;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid #f59e0b;
+      color: #fbbf24;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .standee-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .standee-title span { color: #f59e0b; }
+
+    .standee-sub {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-bottom: 16px;
+    }
+
+    .qr-container {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 12px;
+      display: inline-block;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+
+    .qr-container canvas, .qr-container img {
+      display: block;
+    }
+
+    .standee-call {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .standee-desc {
+      font-size: 11px;
+      color: #cbd5e1;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .standee-footer {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 10px;
+      font-size: 10px;
+      color: #f59e0b;
+      font-weight: 600;
+    }
+
+    @media print {
+      body { background: #fff; color: #000; padding: 0; }
+      .toolbar { display: none; }
+      .table-standee {
+        border: 2px solid #000;
+        background: #fff;
+        color: #000;
+        box-shadow: none;
+      }
+      .standee-title, .standee-call { color: #000; }
+      .standee-title span { color: #b45309; }
+      .standee-sub, .standee-desc { color: #475569; }
+      .standee-badge { background: #fef3c7; border-color: #b45309; color: #b45309; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <h3 style="color: #f59e0b; margin-bottom: 6px;">Format Chevalet / Sticker de Table</h3>
+    <p style="font-size: 12px; color: #94a3b8;">Personnalisez l'URL et imprimez les cartes de table en haute définition :</p>
+    <input type="text" id="target-url" value="https://grillade-alandalous.vercel.app">
+    <button onclick="window.print()">🖨️ Imprimer les cartes</button>
+  </div>
+
+  <div class="cards-container">
+    <!-- CHEVALET HAY RIAD -->
+    <div class="table-standee">
+      <div class="standee-badge">Prestigia — Hay Riad</div>
+      <h2 class="standee-title">Grillade <span>Al Andalous</span></h2>
+      <p class="standee-sub">Boucherie & Grillades depuis 1970</p>
+      
+      <div class="qr-container" id="qr-standee-prestigia"></div>
+      
+      <div class="standee-call">📱 Scannez pour voir les photos</div>
+      <p class="standee-desc">Carte visuelle, ingrédients et découvrez notre Boucherie Al Andalous.</p>
+      
+      <div class="standee-footer">
+        📶 Wi-Fi gratuit à table
+      </div>
+    </div>
+
+    <!-- CHEVALET HARHOURA -->
+    <div class="table-standee">
+      <div class="standee-badge">Harhoura — Mer</div>
+      <h2 class="standee-title">Grillade <span>Al Andalous</span></h2>
+      <p class="standee-sub">Boucherie & Grillades depuis 1970</p>
+      
+      <div class="qr-container" id="qr-standee-harhoura"></div>
+      
+      <div class="standee-call">📱 Scannez pour voir les photos</div>
+      <p class="standee-desc">Carte visuelle, ingrédients et découvrez notre Boucherie Al Andalous.</p>
+      
+      <div class="standee-footer">
+        📶 Wi-Fi gratuit à table
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateStandees() {
+      const baseUrl = document.getElementById('target-url').value.trim() || 'https://grillade-alandalous.vercel.app';
+      
+      const prestBox = document.getElementById('qr-standee-prestigia');
+      const harhBox = document.getElementById('qr-standee-harhoura');
+
+      prestBox.innerHTML = '';
+      harhBox.innerHTML = '';
+
+      new QRCode(prestBox, {
+        text: `${baseUrl}?loc=prestigia`,
+        width: 150,
+        height: 150,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+
+      new QRCode(harhBox, {
+        text: `${baseUrl}?loc=harhoura`,
+        width: 150,
+        height: 150,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    }
+
+    document.getElementById('target-url').addEventListener('input', updateStandees);
+    window.addEventListener('load', updateStandees);
+  </script>
+</body>
+</html>
