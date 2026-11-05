@@ -189,10 +189,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const card = document.createElement('div');
       card.className = 'dish-card';
 
+      // Détection automatique locale : .jpeg -> .jpg -> .png -> fallback démo
+      const isAlreadyLocal = dish.image.startsWith('assets/');
+      const initialSrc = isAlreadyLocal ? dish.image : `assets/dishes/${dish.id}.jpeg`;
+      const fallbackUrl = dish.image;
+
       card.innerHTML = `
         <div class="dish-image-wrapper" data-dish-id="${dish.id}">
           <img class="dish-image" 
-               src="${dish.image}" 
+               src="${initialSrc}" 
+               onerror="
+                 if (this.src.endsWith('.jpeg')) { 
+                   this.src='assets/dishes/${dish.id}.jpg'; 
+                 } else if (this.src.endsWith('.jpg')) { 
+                   this.src='assets/dishes/${dish.id}.png'; 
+                 } else if (!this.dataset.fallbackApplied) { 
+                   this.dataset.fallbackApplied='true'; 
+                   this.src='${fallbackUrl}'; 
+                 }
+               "
                alt="${dish.name}" 
                loading="lazy">
           ${dish.badge ? `<div class="dish-badge">${dish.badge}</div>` : ''}
@@ -217,7 +232,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const imgWrapper = card.querySelector('.dish-image-wrapper');
       imgWrapper.addEventListener('click', () => {
-        openLightbox(dish);
+        const currentImg = card.querySelector('.dish-image');
+        openLightbox({
+          ...dish,
+          activeImageSrc: currentImg ? currentImg.src : dish.image
+        });
       });
 
       grid.appendChild(card);
@@ -232,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function openLightbox(dish) {
     if (!elements.lightboxModal) return;
     state.lightboxDish = dish;
-    elements.lightboxImg.src = dish.image;
+    elements.lightboxImg.src = dish.activeImageSrc || dish.image;
     elements.lightboxTitle.textContent = dish.name;
     elements.lightboxPrice.textContent = `${dish.price} ${RESTAURANT_DATA.info.currency}`;
     elements.lightboxModal.classList.add('active');
