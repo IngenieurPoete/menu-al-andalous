@@ -87,7 +87,7 @@ const RESTAURANT_DATA = {
       category: "starters",
       price: 67,
       badge: "Croustillant",
-      image: "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/crispy-chicken-tenders.jpeg",
       description: "Filets de poulet frais marinés, enrobés d'une panure dorée ultra-croustillante, servis avec nos sauces maison.",
       details: "Poulet 100% frais préparé à la commande."
     },
@@ -141,7 +141,7 @@ const RESTAURANT_DATA = {
       category: "salades",
       price: 72,
       badge: "Signature Maison",
-      image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/salade-al-andalous-new.jpeg",
       description: "Laitue croquante, fromage de chèvre, fruits frais de saison, pulpes d'orange juteuses, noix confites caramélisées, oignons au vinaigre, tomates cerises et vinaigrette balsamique maison.",
       details: "Équilibre parfait entre douceur fruitée et caractère du fromage de chèvre."
     },
@@ -151,7 +151,7 @@ const RESTAURANT_DATA = {
       category: "salades",
       price: 58,
       badge: "Tradition",
-      image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/assortiment-marocain.jpeg",
       description: "Sélection d'entrées cuisinées marocaines authentiques (Zaalouk d'aubergines fumées, Taktouka de poivrons et tomates confites) à l'huile d'olive d'olive pure.",
       details: "L'accompagnement indispensable avec toutes nos grillades."
     },
@@ -205,7 +205,7 @@ const RESTAURANT_DATA = {
       category: "steakhouse",
       price: 185,
       badge: "Extra Tendre",
-      image: "https://images.unsplash.com/photo-1504973959464-854d4d706430?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/filet-mignon.jpeg",
       description: "Cœur de filet mignon extra-tendre saisi aux braises, servi avec son délicieux pavé de pomme de terre doré.",
       details: "Cuisson au choix. 2 accompagnements au choix."
     },
@@ -245,7 +245,7 @@ const RESTAURANT_DATA = {
       category: "steakhouse",
       price: 105,
       badge: "Moelleux",
-      image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/supreme-poulet.jpeg",
       description: "Suprême de volaille mariné aux agrumes et herbes fraîches, grillé à cœur pour conserver toute sa tendreté.",
       details: "2 accompagnements au choix."
     },
@@ -265,7 +265,7 @@ const RESTAURANT_DATA = {
       category: "steakhouse",
       price: 75,
       badge: "Léger",
-      image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/emince-poulet.jpeg",
       description: "Filet de poulet fermier émincé, mariné aux herbes aromatiques et sauté minute.",
       details: "Accompagné de légumes frais de saison."
     },
@@ -279,7 +279,7 @@ const RESTAURANT_DATA = {
       category: "brochettes",
       price: 110,
       badge: "Premier Choix",
-      image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/brochettes-filet-boeuf.jpeg",
       description: "Cœurs de filet de bœuf extra-tendres taillés en cubes généreux et saisis sur braises ardentes.",
       details: "2 accompagnements au choix : Riz aux petits légumes, Légumes sautés ou Purée maison."
     },
@@ -289,7 +289,7 @@ const RESTAURANT_DATA = {
       category: "brochettes",
       price: 98,
       badge: "Spécialité Maison",
-      image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/brochettes-viande-hachee.jpeg",
       description: "Viande hachée fraîche assaisonnée à la marocaine (persil frais, coriandre, oignons doux, cumin et paprika doux).",
       details: "Grillée à la perfection. 2 accompagnements au choix."
     },
@@ -329,7 +329,7 @@ const RESTAURANT_DATA = {
       category: "brochettes",
       price: 96,
       badge: "Mariné",
-      image: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/brochettes-poulet.jpeg",
       description: "Suprêmes de poulet marinés au citron frais, safran, ail et herbes de Provence.",
       details: "2 accompagnements au choix."
     },
@@ -393,7 +393,7 @@ const RESTAURANT_DATA = {
       category: "tagines",
       price: 65,
       badge: "Gourmet",
-      image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/tagine-cervelle.jpeg",
       description: "Cervelle fraîche cuisinée délicatement en sauce tomate relevée au paprika doux, persil plat et citron confit.",
       details: "Recette traditionnelle marocaine très appréciée des connaisseurs."
     },
@@ -417,7 +417,7 @@ const RESTAURANT_DATA = {
       category: "burgers",
       price: 88,
       badge: "Signature Maison",
-      image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/burger-al-andalous.jpeg",
       description: "Façon Méchoui : Steak haché pur bœuf, oignons et tomates méchoui grillés, olives vertes, cheddar fondu, zaalouk maison et sauce secrète Al Andalous.",
       details: "Pain brioché toasté, servi avec frites dorées croustillantes."
     },
@@ -427,7 +427,7 @@ const RESTAURANT_DATA = {
       category: "burgers",
       price: 85,
       badge: "Nouveauté",
-      image: "https://images.unsplash.com/photo-1625813506062-0aeb1d7a094b?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/burger-poulet-crunchy.jpeg",
       description: "Filet de poulet pané extra-croustillant, tomates fraîches, oignons, laitue iceberg croquante et sauce maison gourmande.",
       details: "Servi avec frites dorées."
     },
@@ -471,7 +471,7 @@ const RESTAURANT_DATA = {
       category: "sandwichs",
       price: 85,
       badge: "Incontournable",
-      image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/cheese-steak.jpeg",
       description: "Faux-filet grillé minute en fines tranches, oignons fondants, poivron vert, mayonnaise à l'ancienne et cheddar généreusement fondu.",
       details: "Baguette croustillante, servi avec frites."
     },
@@ -511,7 +511,7 @@ const RESTAURANT_DATA = {
       category: "sandwichs",
       price: 60,
       badge: "Classique",
-      image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/sandwich-viande-hachee.jpeg",
       description: "Kefta artisanale bien relevée grillée sur place, oignons et sauce au choix.",
       details: "Servi avec frites."
     },
@@ -551,7 +551,7 @@ const RESTAURANT_DATA = {
       category: "sandwichs",
       price: 58,
       badge: "Classique",
-      image: "https://images.unsplash.com/photo-1621800043295-a73fe2f76e2c?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/sandwich-poulet.jpeg",
       description: "Blancs de poulet émincés marinés aux herbes et cuits à la plancha.",
       details: "Servi avec frites."
     },
