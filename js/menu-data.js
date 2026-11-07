@@ -235,7 +235,7 @@ const RESTAURANT_DATA = {
       category: "steakhouse",
       price: 135,
       badge: "Incontournable",
-      image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/cotelettes-agneau.jpeg",
       description: "Côtelettes d'agneau fraîches de notre boucherie, marinées aux fines herbes et grillées à feu vif pour une chair tendre et juteuse.",
       details: "2 accompagnements au choix."
     },
@@ -309,7 +309,7 @@ const RESTAURANT_DATA = {
       category: "brochettes",
       price: 125,
       badge: "Assortiment",
-      image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/brochettes-mixtes.jpeg",
       description: "Assortiment généreux combinant filet de bœuf, poulet mariné et kefta maison.",
       details: "2 accompagnements au choix."
     },
@@ -339,7 +339,7 @@ const RESTAURANT_DATA = {
       category: "brochettes",
       price: 105,
       badge: "Artisanal",
-      image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/brochettes-saucisse-boeuf.jpeg",
       description: "Saucisses artisanales confectionnées par notre Boucherie Al Andalous sans conservateur.",
       details: "2 accompagnements au choix."
     },
@@ -595,7 +595,7 @@ const RESTAURANT_DATA = {
       category: "enfants",
       price: 60,
       badge: "Menu Enfant",
-      image: "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/menu-nuggets.jpeg",
       description: "Nuggets dorés et croustillants de poulet, frites maison, jus d'orange frais ou eau minérale, et cadeau surprise.",
       details: "Réservé aux enfants jusqu'à 12 ans."
     },
@@ -733,7 +733,7 @@ const RESTAURANT_DATA = {
       category: "boissons",
       price: 28,
       badge: "Signature",
-      image: "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/jus-al-andalous.jpeg",
       description: "Cocktail signature de fruits frais de saison pressés à la minute selon notre recette secrète.",
       details: "100% fruits frais sans sucre ajouté."
     },
@@ -743,7 +743,7 @@ const RESTAURANT_DATA = {
       category: "boissons",
       price: 28,
       badge: "Vitamines",
-      image: "https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/jus-detox.jpg",
       description: "Concombre croquant, carotte sucrée, betterave rouge et orange pressée.",
       details: "Énergie pure et bienfaits digestifs après vos viandes."
     },
@@ -753,7 +753,7 @@ const RESTAURANT_DATA = {
       category: "boissons",
       price: 18,
       badge: "Pressé Minute",
-      image: "https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/jus-orange.png",
       description: "Oranges marocaines juteuses et sucrées pressées à la commande.",
       details: "Verre grand format."
     },
@@ -763,7 +763,7 @@ const RESTAURANT_DATA = {
       category: "boissons",
       price: 18,
       badge: "Tonifiant",
-      image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/jus-citron-gingembre.png",
       description: "Citron vert et jaune frais associé à la fraîcheur piquante du gingembre râpé et menthe fraîche.",
       details: "Digestif et ultra rafraîchissant."
     },
