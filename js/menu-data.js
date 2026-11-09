@@ -156,7 +156,7 @@ const RESTAURANT_DATA = {
       category: "starters",
       price: 63,
       badge: "Nouveauté",
-      image: "https://images.unsplash.com/photo-1527477321005-4d01d75ba890?auto=format&fit=crop&w=900&q=80",
+      image: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=900&q=80",
       description: "Ailes de poulet croustillantes laquées dans une sauce Buffalo gourmande au miel pur et épices douces.",
       details: "Idéal pour commencer votre repas."
     },

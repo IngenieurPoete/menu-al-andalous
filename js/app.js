@@ -251,23 +251,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const card = document.createElement('div');
         card.className = 'dish-card';
 
-        // Détection automatique locale : .jpeg -> .jpg -> .png -> fallback démo
-        const isAlreadyLocal = dish.image.startsWith('assets/');
-        const initialSrc = isAlreadyLocal ? dish.image : `assets/dishes/${dish.id}.jpeg`;
-        const fallbackUrl = dish.image;
+        // Source exacte de l'image avec cache-buster pour garantir un affichage immédiat sans cache 404
+        const isLocal = dish.image.startsWith('assets/');
+        const imgSrc = isLocal ? `${dish.image}?v=20261109c` : dish.image;
+        const defaultFallback = 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80';
 
         card.innerHTML = `
           <div class="dish-image-wrapper" data-dish-id="${dish.id}">
             <img class="dish-image" 
-                 src="${initialSrc}" 
+                 src="${imgSrc}" 
                  onerror="
-                   if (this.src.endsWith('.jpeg')) { 
-                     this.src='assets/dishes/${dish.id}.jpg'; 
-                   } else if (this.src.endsWith('.jpg')) { 
-                     this.src='assets/dishes/${dish.id}.png'; 
-                   } else if (!this.dataset.fallbackApplied) { 
-                     this.dataset.fallbackApplied='true'; 
-                     this.src='${fallbackUrl}'; 
+                   if (!this.dataset.fallbackApplied) {
+                     this.dataset.fallbackApplied = 'true';
+                     this.src = '${defaultFallback}';
                    }
                  "
                  alt="${dish.name}" 
