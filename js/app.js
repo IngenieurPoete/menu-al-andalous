@@ -155,15 +155,67 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // -------------------------------------------------------------
-  // 7. CARTES DE PLATS
+  // 7. CARTES DE PLATS & SECTION SUPPLÉMENTS
   // -------------------------------------------------------------
+  function buildSupplementsElement(supplementsList) {
+    const section = document.createElement('div');
+    section.className = 'supplements-section';
+    section.innerHTML = `
+      <div class="supplements-header">
+        <h3 class="supplements-title">Suppléments & Accompagnements</h3>
+        <p class="supplements-subtitle">À ajouter à vos grillades, burgers et assiettes selon vos envies</p>
+      </div>
+      <div class="supplements-list">
+        ${supplementsList.map(s => `
+          <div class="supplement-item">
+            <div class="supplement-info">
+              <div class="supplement-name-row">
+                <span class="supplement-name">${s.name}</span>
+                ${s.badge ? `<span class="supplement-badge">${s.badge}</span>` : ''}
+              </div>
+              <div class="supplement-desc">${s.description}</div>
+            </div>
+            <div class="supplement-dots"></div>
+            <div class="supplement-price">${s.price} ${RESTAURANT_DATA.info.currency}</div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+    return section;
+  }
+
   function renderDishes() {
     if (!elements.dishesContainer) return;
     elements.dishesContainer.innerHTML = '';
 
+    const q = state.searchQuery.toLowerCase().trim();
+
+    // Onglet dédié exclusivement aux Suppléments (présentation en liste épurée sans photo)
+    if (state.currentCategory === 'supplements') {
+      const filteredSupplements = (RESTAURANT_DATA.supplements || []).filter(s => {
+        return !q || 
+          s.name.toLowerCase().includes(q) || 
+          s.description.toLowerCase().includes(q) ||
+          (s.badge && s.badge.toLowerCase().includes(q));
+      });
+
+      if (filteredSupplements.length === 0) {
+        elements.dishesContainer.innerHTML = `
+          <div class="no-results">
+            <h3>Aucun supplément trouvé</h3>
+            <p>Essayez avec un autre mot-clé ou consultez les autres catégories.</p>
+          </div>
+        `;
+        return;
+      }
+
+      elements.dishesContainer.appendChild(buildSupplementsElement(filteredSupplements));
+      return;
+    }
+
+    // Filtrage des plats principaux
     const filtered = RESTAURANT_DATA.dishes.filter(dish => {
       const matchesCategory = state.currentCategory === 'all' || dish.category === state.currentCategory;
-      const q = state.searchQuery.toLowerCase().trim();
       const matchesSearch = !q || 
         dish.name.toLowerCase().includes(q) || 
         dish.description.toLowerCase().includes(q) ||
@@ -172,7 +224,16 @@ document.addEventListener('DOMContentLoaded', () => {
       return matchesCategory && matchesSearch;
     });
 
-    if (filtered.length === 0) {
+    const matchingSupplements = (state.currentCategory === 'all' && RESTAURANT_DATA.supplements) 
+      ? RESTAURANT_DATA.supplements.filter(s => {
+          return !q || 
+            s.name.toLowerCase().includes(q) || 
+            s.description.toLowerCase().includes(q) ||
+            (s.badge && s.badge.toLowerCase().includes(q));
+        })
+      : [];
+
+    if (filtered.length === 0 && matchingSupplements.length === 0) {
       elements.dishesContainer.innerHTML = `
         <div class="no-results">
           <h3>Aucun plat trouvé</h3>
@@ -182,67 +243,78 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const grid = document.createElement('div');
-    grid.className = 'dishes-grid';
+    if (filtered.length > 0) {
+      const grid = document.createElement('div');
+      grid.className = 'dishes-grid';
 
-    filtered.forEach(dish => {
-      const card = document.createElement('div');
-      card.className = 'dish-card';
+      filtered.forEach(dish => {
+        const card = document.createElement('div');
+        card.className = 'dish-card';
 
-      // Détection automatique locale : .jpeg -> .jpg -> .png -> fallback démo
-      const isAlreadyLocal = dish.image.startsWith('assets/');
-      const initialSrc = isAlreadyLocal ? dish.image : `assets/dishes/${dish.id}.jpeg`;
-      const fallbackUrl = dish.image;
+        // Détection automatique locale : .jpeg -> .jpg -> .png -> fallback démo
+        const isAlreadyLocal = dish.image.startsWith('assets/');
+        const initialSrc = isAlreadyLocal ? dish.image : `assets/dishes/${dish.id}.jpeg`;
+        const fallbackUrl = dish.image;
 
-      card.innerHTML = `
-        <div class="dish-image-wrapper" data-dish-id="${dish.id}">
-          <img class="dish-image" 
-               src="${initialSrc}" 
-               onerror="
-                 if (this.src.endsWith('.jpeg')) { 
-                   this.src='assets/dishes/${dish.id}.jpg'; 
-                 } else if (this.src.endsWith('.jpg')) { 
-                   this.src='assets/dishes/${dish.id}.png'; 
-                 } else if (!this.dataset.fallbackApplied) { 
-                   this.dataset.fallbackApplied='true'; 
-                   this.src='${fallbackUrl}'; 
-                 }
-               "
-               alt="${dish.name}" 
-               loading="lazy">
-          ${dish.badge ? `<div class="dish-badge">${dish.badge}</div>` : ''}
-          <div class="zoom-hint" title="Agrandir la photo">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-              <line x1="11" y1="8" x2="11" y2="14"></line>
-              <line x1="8" y1="11" x2="14" y2="11"></line>
-            </svg>
+        card.innerHTML = `
+          <div class="dish-image-wrapper" data-dish-id="${dish.id}">
+            <img class="dish-image" 
+                 src="${initialSrc}" 
+                 onerror="
+                   if (this.src.endsWith('.jpeg')) { 
+                     this.src='assets/dishes/${dish.id}.jpg'; 
+                   } else if (this.src.endsWith('.jpg')) { 
+                     this.src='assets/dishes/${dish.id}.png'; 
+                   } else if (!this.dataset.fallbackApplied) { 
+                     this.dataset.fallbackApplied='true'; 
+                     this.src='${fallbackUrl}'; 
+                   }
+                 "
+                 alt="${dish.name}" 
+                 loading="lazy">
+            ${dish.badge ? `<div class="dish-badge">${dish.badge}</div>` : ''}
+            <div class="zoom-hint" title="Agrandir la photo">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                <line x1="11" y1="8" x2="11" y2="14"></line>
+                <line x1="8" y1="11" x2="14" y2="11"></line>
+              </svg>
+            </div>
           </div>
-        </div>
-        <div class="dish-content">
-          <div class="dish-header">
-            <h3 class="dish-title">${dish.name}</h3>
-            <span class="dish-price">${dish.price} ${RESTAURANT_DATA.info.currency}</span>
+          <div class="dish-content">
+            <div class="dish-header">
+              <h3 class="dish-title">${dish.name}</h3>
+              <span class="dish-price">${dish.price} ${RESTAURANT_DATA.info.currency}</span>
+            </div>
+            <p class="dish-desc">${dish.description}</p>
+            ${dish.details ? `<div class="dish-details">${dish.details}</div>` : ''}
           </div>
-          <p class="dish-desc">${dish.description}</p>
-          ${dish.details ? `<div class="dish-details">${dish.details}</div>` : ''}
-        </div>
-      `;
+        `;
 
-      const imgWrapper = card.querySelector('.dish-image-wrapper');
-      imgWrapper.addEventListener('click', () => {
-        const currentImg = card.querySelector('.dish-image');
-        openLightbox({
-          ...dish,
-          activeImageSrc: currentImg ? currentImg.src : dish.image
+        const imgWrapper = card.querySelector('.dish-image-wrapper');
+        imgWrapper.addEventListener('click', () => {
+          const currentImg = card.querySelector('.dish-image');
+          openLightbox({
+            ...dish,
+            activeImageSrc: currentImg ? currentImg.src : dish.image
+          });
         });
+
+        grid.appendChild(card);
       });
 
-      grid.appendChild(card);
-    });
+      elements.dishesContainer.appendChild(grid);
+    }
 
-    elements.dishesContainer.appendChild(grid);
+    // Affichage des suppléments en fin de liste sur "Tout le Menu"
+    if (state.currentCategory === 'all' && matchingSupplements.length > 0) {
+      const suppEl = buildSupplementsElement(matchingSupplements);
+      if (filtered.length > 0) {
+        suppEl.style.marginTop = '24px';
+      }
+      elements.dishesContainer.appendChild(suppEl);
+    }
   }
 
   // -------------------------------------------------------------

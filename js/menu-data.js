@@ -62,9 +62,58 @@ const RESTAURANT_DATA = {
     { id: "burgers", name: "Burgers" },
     { id: "sandwichs", name: "Sandwichs" },
     { id: "enfants", name: "Menu Enfant" },
+    { id: "supplements", name: "Suppléments" },
     { id: "desserts", name: "Desserts" },
     { id: "boissons", name: "Jus & Boissons" },
     { id: "chaud", name: "Thés & Cafés" }
+  ],
+
+  // -------------------------------------------------------------
+  // SUPPLÉMENTS & ACCOMPAGNEMENTS (PRÉSENTATION ÉPURÉE EN LISTE)
+  // -------------------------------------------------------------
+  supplements: [
+    {
+      id: "supplement-frites",
+      name: "Portion de Frites",
+      price: 20,
+      badge: "Croustillant",
+      description: "Portion généreuse de frites dorées et croustillantes."
+    },
+    {
+      id: "supplement-garniture",
+      name: "Garniture au Choix",
+      price: 15,
+      badge: "Au Choix",
+      description: "Portion de riz aux petits légumes, purée maison veloutée ou légumes sautés de saison."
+    },
+    {
+      id: "supplement-fromage",
+      name: "Supplément Cheddar Fondu / Fromage",
+      price: 10,
+      badge: "Gourmand",
+      description: "Tranche de cheddar fondant pour agrémenter vos burgers, viandes et frites."
+    },
+    {
+      id: "supplement-oeuf",
+      name: "Supplément Œuf au Plat",
+      price: 5,
+      badge: "Minute",
+      description: "Œuf frais préparé au plat pour compléter vos plats ou burgers."
+    },
+    {
+      id: "supplement-sauce",
+      name: "Sauce Gourmande au Choix",
+      price: 10,
+      badge: "Maison",
+      description: "Sauce Poivre vert, Champignons à la crème, Roquefort ou Barbecue maison."
+    },
+    {
+      id: "supplement-pain",
+      name: "Pain Traditionnel Chaud / Baguette",
+      price: 5,
+      badge: "Boulangerie",
+      description: "Pain frais du jour cuit au four."
+    }
   ],
 
   dishes: [
@@ -72,14 +121,24 @@ const RESTAURANT_DATA = {
     // 1. STARTERS & ENTRÉES
     // =============================================================
     {
-      id: "honey-buffalo-wings",
-      name: "Honey Buffalo Chicken Wings",
+      id: "pastilla-poulet",
+      name: "Pastilla Traditionnelle au Poulet",
       category: "starters",
-      price: 63,
-      badge: "Nouveauté",
-      image: "https://images.unsplash.com/photo-1527477321005-4d01d75ba890?auto=format&fit=crop&w=900&q=80",
-      description: "Ailes de poulet croustillantes laquées dans une sauce Buffalo gourmande au miel pur et épices douces.",
-      details: "Idéal pour commencer votre repas."
+      price: 65,
+      badge: "Spécialité Maison",
+      image: "assets/dishes/pastilla-poulet.jpeg",
+      description: "Feuilleté croustillant doré au four, effiloché de poulet fermier aux amandes torréfiées concassées, cannelle fine et fleur d'oranger, saupoudré de sucre glace.",
+      details: "Le grand fleuron de la gastronomie marocaine fait maison."
+    },
+    {
+      id: "pastilla-poisson",
+      name: "Pastilla aux Fruits de Mer & Poisson",
+      category: "starters",
+      price: 75,
+      badge: "Saveurs Marines",
+      image: "assets/dishes/pastilla-poisson.jpeg",
+      description: "Feuilleté croustillant généreusement garni de crevettes royales, calamars tendres, filets de poisson blanc et vermicelle de riz en charmoula parfumée.",
+      details: "Préparée minute avec poissons et fruits de mer frais."
     },
     {
       id: "crispy-chicken-tenders",
@@ -90,6 +149,16 @@ const RESTAURANT_DATA = {
       image: "assets/dishes/crispy-chicken-tenders.jpeg",
       description: "Filets de poulet frais marinés, enrobés d'une panure dorée ultra-croustillante, servis avec nos sauces maison.",
       details: "Poulet 100% frais préparé à la commande."
+    },
+    {
+      id: "honey-buffalo-wings",
+      name: "Honey Buffalo Chicken Wings",
+      category: "starters",
+      price: 63,
+      badge: "Nouveauté",
+      image: "https://images.unsplash.com/photo-1527477321005-4d01d75ba890?auto=format&fit=crop&w=900&q=80",
+      description: "Ailes de poulet croustillantes laquées dans une sauce Buffalo gourmande au miel pur et épices douces.",
+      details: "Idéal pour commencer votre repas."
     },
     {
       id: "croquettes-maison",
@@ -225,7 +294,7 @@ const RESTAURANT_DATA = {
       category: "steakhouse",
       price: 155,
       badge: "Gourmet Grill",
-      image: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/t-bone-steak.jpeg",
       description: "Le meilleur des deux mondes : le fondant du filet d'un côté et la puissance savoureuse du faux-filet de l'autre, séparés par l'os en T.",
       details: "Grillé à la braise. 2 accompagnements au choix."
     },
@@ -255,7 +324,7 @@ const RESTAURANT_DATA = {
       category: "steakhouse",
       price: 105,
       badge: "Braisé",
-      image: "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/cuisses-poulet-desossees.jpeg",
       description: "Hauts de cuisse entièrement désossés, marinés dans notre sauce secrète Al Andalous et rôtis au feu de bois.",
       details: "2 accompagnements au choix."
     },
@@ -299,7 +368,7 @@ const RESTAURANT_DATA = {
       category: "brochettes",
       price: 125,
       badge: "Authentique",
-      image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/brochettes-boulfaf.jpeg",
       description: "Dés de foie de veau grillés enrobés de fine crépine d'agneau croustillante, saupoudrés de cumin et sel gemme.",
       details: "Le grand classique marocain pour les amateurs de vraies saveurs de grillade."
     },
@@ -349,7 +418,7 @@ const RESTAURANT_DATA = {
       category: "brochettes",
       price: 115,
       badge: "Recette Bouchère",
-      image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/brochettes-saucisse-foie.jpeg",
       description: "Saucisse gourmande au foie et épices fines préparée selon la tradition Al Andalous.",
       details: "2 accompagnements au choix."
     },
@@ -403,7 +472,7 @@ const RESTAURANT_DATA = {
       category: "tagines",
       price: 60,
       badge: "Vendredi Uniquement",
-      image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/couscous-viande-tfaya.jpg",
       description: "Semoule roulée et cuite à la vapeur, viande tendre d'agneau et bœuf, sept légumes du marché et confit d'oignons caramélisés aux raisins secs (Tfaya).",
       details: "Chaque vendredi uniquement — Servi selon la tradition avec un grand verre de Lben frais."
     },
@@ -437,7 +506,7 @@ const RESTAURANT_DATA = {
       category: "burgers",
       price: 85,
       badge: "Braisé",
-      image: "https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/chicken-burger.jpeg",
       description: "Steak de poulet mariné et grillé à la flamme, poivrons rouges rôtis, aïoli moutarde à l'ancienne, laitue, tomates et oignons au vinaigre doux.",
       details: "Servi avec frites dorées."
     },
@@ -457,7 +526,7 @@ const RESTAURANT_DATA = {
       category: "burgers",
       price: 95,
       badge: "Gourmet",
-      image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/burger-bacon.jpeg",
       description: "Bacon de bœuf croustillant, 2 steaks de viande hachée fraîche, sauce burger maison, double cheddar, laitue, tomates et oignons grillés.",
       details: "Bun brioché au beurre, servi avec frites dorées."
     },
@@ -491,7 +560,7 @@ const RESTAURANT_DATA = {
       category: "sandwichs",
       price: 80,
       badge: "Croustillant",
-      image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/sandwich-poulet-crispy.jpeg",
       description: "Beaux morceaux de poulet pané doré, sauce maison onctueuse, salade et tomates.",
       details: "Servi avec frites dorées."
     },
@@ -587,7 +656,7 @@ const RESTAURANT_DATA = {
     },
 
     // =============================================================
-    // 8. MENU ENFANT & SUPPLÉMENTS
+    // 8. MENU ENFANT (Exclusivement réservé aux menus enfants)
     // =============================================================
     {
       id: "menu-nuggets",
@@ -596,7 +665,7 @@ const RESTAURANT_DATA = {
       price: 60,
       badge: "Menu Enfant",
       image: "assets/dishes/menu-nuggets.jpeg",
-      description: "Nuggets dorés et croustillants de poulet, frites maison, jus d'orange frais ou eau minérale, et cadeau surprise.",
+      description: "Nuggets dorés et croustillants de poulet, frites croustillantes, jus d'orange frais ou eau minérale, et cadeau surprise.",
       details: "Réservé aux enfants jusqu'à 12 ans."
     },
     {
@@ -608,46 +677,6 @@ const RESTAURANT_DATA = {
       image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80",
       description: "Mini burger à la viande hachée fraîche de notre boucherie, frites croustillantes, boisson au choix et surprise.",
       details: "Réservé aux enfants jusqu'à 12 ans."
-    },
-    {
-      id: "supplement-frites",
-      name: "Portion de Frites Maison",
-      category: "enfants",
-      price: 20,
-      badge: "Accompagnement",
-      image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=80",
-      description: "Grande ration de frites dorées taillées fraîches et croustillantes.",
-      details: "Portion généreuse."
-    },
-    {
-      id: "supplement-garniture",
-      name: "Garniture au Choix",
-      category: "enfants",
-      price: 15,
-      badge: "Accompagnement",
-      image: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=80",
-      description: "Portion supplémentaire de riz aux petits légumes, purée maison ou légumes sautés.",
-      details: "Fait maison."
-    },
-    {
-      id: "supplement-fromage",
-      name: "Supplément Fromage / Cheddar",
-      category: "enfants",
-      price: 10,
-      badge: "Supplément",
-      image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=900&q=80",
-      description: "Tranche de cheddar fondant ou fromage pour agrémenter vos burgers et frites.",
-      details: "Servi chaud fondu."
-    },
-    {
-      id: "supplement-oeuf",
-      name: "Supplément Œuf au Plat",
-      category: "enfants",
-      price: 5,
-      badge: "Supplément",
-      image: "https://images.unsplash.com/photo-1541518763669-27fef04b14ea?auto=format&fit=crop&w=900&q=80",
-      description: "Œuf frais préparé au plat pour compléter vos plats ou burgers.",
-      details: "Préparé à la minute."
     },
 
     // =============================================================
@@ -709,19 +738,9 @@ const RESTAURANT_DATA = {
       category: "desserts",
       price: 45,
       badge: "Croustillant & Fondant",
-      image: "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/creme-brulee.jpeg",
       description: "Crème parfumée à la véritable gousse de vanille, caramélisée au chalumeau devant vous pour une croûte croustillante.",
       details: "Servie tiède."
-    },
-    {
-      id: "gateau-maison",
-      name: "Gâteau Maison du Jour",
-      category: "desserts",
-      price: 45,
-      badge: "Pâtisserie Fraîche",
-      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=80",
-      description: "Création pâtissière fraîche préparée chaque matin par notre chef pâtissier.",
-      details: "Demandez le parfum du jour au serveur."
     },
 
     // =============================================================
@@ -743,7 +762,7 @@ const RESTAURANT_DATA = {
       category: "boissons",
       price: 28,
       badge: "Vitamines",
-      image: "assets/dishes/jus-detox.jpg",
+      image: "assets/dishes/jus-detox2.png",
       description: "Concombre croquant, carotte sucrée, betterave rouge et orange pressée.",
       details: "Énergie pure et bienfaits digestifs après vos viandes."
     },
@@ -783,7 +802,7 @@ const RESTAURANT_DATA = {
       category: "boissons",
       price: 18,
       badge: "Saveur Maroc",
-      image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/Hawai-Tropical.jpg",
       description: "La boisson pétillante tropicale marocaine par excellence.",
       details: "33cl."
     },
@@ -793,7 +812,7 @@ const RESTAURANT_DATA = {
       category: "boissons",
       price: 18,
       badge: "Classique",
-      image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/Canette-Poms.jpg",
       description: "Boisson pétillante saveur pomme verte.",
       details: "33cl."
     },
@@ -803,7 +822,7 @@ const RESTAURANT_DATA = {
       category: "boissons",
       price: 18,
       badge: "Pétillant",
-      image: "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/sprite.jpg",
       description: "Boisson gazeuse rafraîchissante au goût citron-lime.",
       details: "33cl."
     },
@@ -813,7 +832,7 @@ const RESTAURANT_DATA = {
       category: "boissons",
       price: 18,
       badge: "Pétillant",
-      image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/schewps-tonic.jpg",
       description: "Tonic pétillant servi frais.",
       details: "33cl."
     },
@@ -823,7 +842,7 @@ const RESTAURANT_DATA = {
       category: "boissons",
       price: 18,
       badge: "Pétillant",
-      image: "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/schewps-citron.jpg",
       description: "Saveur citron pétillante.",
       details: "33cl."
     },
@@ -833,7 +852,7 @@ const RESTAURANT_DATA = {
       category: "boissons",
       price: 20,
       badge: "Pulpe d'Orange",
-      image: "https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/orangina.png",
       description: "La boisson aux vraies pulpes d'orange secouée fraîche.",
       details: "33cl."
     },
@@ -843,19 +862,19 @@ const RESTAURANT_DATA = {
       category: "boissons",
       price: 15,
       badge: "Eau Pure",
-      image: "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/eau-minerale-50cl.jpg",
       description: "Bouteille individuelle servie fraîche ou tempérée.",
       details: "50 cl."
     },
     {
-      id: "eau-minerale-150cl",
-      name: "Eau Minérale (1,5 L)",
+      id: "eau-minerale-75cl",
+      name: "Eau Minérale (75 cl)",
       category: "boissons",
-      price: 25,
-      badge: "Grand Format",
-      image: "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?auto=format&fit=crop&w=900&q=80",
-      description: "Grande bouteille d'eau minérale pour toute la table.",
-      details: "1,5 Litre."
+      price: 20,
+      badge: "Bouteille de Table",
+      image: "assets/dishes/eau-minerale-75cl.jpg",
+      description: "Bouteille d'eau minérale servie fraîche ou tempérée.",
+      details: "75 cl."
     },
 
     // =============================================================
@@ -867,7 +886,7 @@ const RESTAURANT_DATA = {
       category: "chaud",
       price: 16,
       badge: "Tradition",
-      image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/the-menthe.jpg",
       description: "Thé vert gunpowder infusé à la menthe fraîche d'Al Andalous, versé haut pour une mousse généreuse.",
       details: "Servi dans la théière traditionnelle avec verre sculpté."
     },
