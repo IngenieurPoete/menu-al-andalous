@@ -100,23 +100,19 @@ const RESTAURANT_DATA = {
       badge: "Minute",
       description: "Œuf frais préparé au plat pour compléter vos plats ou burgers."
     },
-    {
-      id: "supplement-sauce",
-      name: "Sauce Gourmande au Choix",
-      price: 10,
-      badge: "Maison",
-      description: "Sauce Poivre vert, Champignons à la crème, Roquefort ou Barbecue maison."
-    },
-    {
-      id: "supplement-pain",
-      name: "Pain Traditionnel Chaud / Baguette",
-      price: 5,
-      badge: "Boulangerie",
-      description: "Pain frais du jour cuit au four."
-    }
   ],
 
   dishes: [
+    {
+      id: "accompagnements-au-choix",
+      name: "Accompagnements au Choix",
+      category: "supplements",
+      price: 15,
+      badge: "Au choix",
+      image: "assets/dishes/accompagnements-au-choix.jpeg",
+      description: "Riz aux petits légumes, légumes sautés, purée maison veloutée ou pommes de terre grillées selon votre préféré.",
+      details: "À ajouter à toutes vos grillades et burgers pour un repas complet et équilibré."
+    },
     // =============================================================
     // 1. STARTERS & ENTRÉES
     // =============================================================
@@ -126,7 +122,7 @@ const RESTAURANT_DATA = {
       category: "starters",
       price: 65,
       badge: "Spécialité Maison",
-      image: "assets/dishes/pastilla-poulet.jpeg",
+      image: "assets/dishes/pastilla-poisson.jpeg",
       description: "Feuilleté croustillant doré au four, effiloché de poulet fermier aux amandes torréfiées concassées, cannelle fine et fleur d'oranger, saupoudré de sucre glace.",
       details: "Le grand fleuron de la gastronomie marocaine fait maison."
     },
@@ -134,9 +130,9 @@ const RESTAURANT_DATA = {
       id: "pastilla-poisson",
       name: "Pastilla aux Fruits de Mer & Poisson",
       category: "starters",
-      price: 75,
+      price: 78,
       badge: "Saveurs Marines",
-      image: "assets/dishes/pastilla-poisson.jpeg",
+      image: "assets/dishes/pastilla-poulet.jpeg",
       description: "Feuilleté croustillant généreusement garni de crevettes royales, calamars tendres, filets de poisson blanc et vermicelle de riz en charmoula parfumée.",
       details: "Préparée minute avec poissons et fruits de mer frais."
     },
@@ -166,7 +162,7 @@ const RESTAURANT_DATA = {
       category: "starters",
       price: 55,
       badge: "Fait Maison",
-      image: "https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/croquettes-maison.jpeg",
       description: "Délicieuses croquettes artisanales croustillantes au cœur fondant : Fromage coulant, Chili relevé ou Poulet tendre.",
       details: "Recette maison exclusive Al Andalous."
     },
@@ -254,9 +250,9 @@ const RESTAURANT_DATA = {
       category: "steakhouse",
       price: 600,
       badge: "Pièce d'Exception",
-      image: "https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/tomahawk-45j.jpeg",
       description: "Pièce noble d'environ 1,2 kg à 1,5 kg avec os long, maturée 45 jours sur place pour une tendreté et des arômes intenses de noisette.",
-      details: "Viande d'exception de notre boucherie. 2 accompagnements au choix."
+      details: "Viande d'exception de notre boucherie. 4 accompagnements au choix."
     },
     {
       id: "black-angus-steak",
@@ -274,7 +270,7 @@ const RESTAURANT_DATA = {
       category: "steakhouse",
       price: 185,
       badge: "Extra Tendre",
-      image: "assets/dishes/filet-mignon.jpeg",
+      image: "assets/dishes/filet-mignon2.jpeg",
       description: "Cœur de filet mignon extra-tendre saisi aux braises, servi avec son délicieux pavé de pomme de terre doré.",
       details: "Cuisson au choix. 2 accompagnements au choix."
     },
@@ -284,9 +280,9 @@ const RESTAURANT_DATA = {
       category: "steakhouse",
       price: 185,
       badge: "Confite Lente",
-      image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/souris-agneau.jpeg",
       description: "Généreuse pièce de 500g confite lentement pendant de longues heures jusqu'à ce que la viande se détache délicatement de l'os.",
-      details: "2 accompagnements au choix."
+      details: "1 accompagnement au choix. Garniture au choix : 15 DH."
     },
     {
       id: "t-bone-steak",
@@ -304,7 +300,7 @@ const RESTAURANT_DATA = {
       category: "steakhouse",
       price: 135,
       badge: "Incontournable",
-      image: "assets/dishes/cotelettes-agneau.jpeg",
+      image: "assets/dishes/cotelettes-agneau2.jpeg",
       description: "Côtelettes d'agneau fraîches de notre boucherie, marinées aux fines herbes et grillées à feu vif pour une chair tendre et juteuse.",
       details: "2 accompagnements au choix."
     },
@@ -526,7 +522,7 @@ const RESTAURANT_DATA = {
       category: "burgers",
       price: 95,
       badge: "Gourmet",
-      image: "assets/dishes/burger-bacon.jpeg",
+      image: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=900&q=80",
       description: "Bacon de bœuf croustillant, 2 steaks de viande hachée fraîche, sauce burger maison, double cheddar, laitue, tomates et oignons grillés.",
       details: "Bun brioché au beurre, servi avec frites dorées."
     },
@@ -674,7 +670,7 @@ const RESTAURANT_DATA = {
       category: "enfants",
       price: 65,
       badge: "Menu Enfant",
-      image: "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/mini-burger.jpeg",
       description: "Mini burger à la viande hachée fraîche de notre boucherie, frites croustillantes, boisson au choix et surprise.",
       details: "Réservé aux enfants jusqu'à 12 ans."
     },
@@ -728,7 +724,7 @@ const RESTAURANT_DATA = {
       category: "desserts",
       price: 55,
       badge: "Incontournable",
-      image: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/san-sebastian-cheesecake.jpeg",
       description: "Le fameux gâteau basque à la croûte dorée caramélisée et au cœur ultra-crémeux et fondant à souhait.",
       details: "Nappage coulis de chocolat chaud ou fruits rouges au choix."
     },

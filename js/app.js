@@ -184,11 +184,72 @@ document.addEventListener('DOMContentLoaded', () => {
     return section;
   }
 
+  function buildDishCard(dish) {
+    const card = document.createElement('div');
+    card.className = 'dish-card';
+    card.dataset.category = dish.category;
+
+    const isLocal = dish.image && dish.image.startsWith('assets/');
+    const imgSrc = isLocal ? `${dish.image}?v=20261109c` : dish.image;
+    const defaultFallback = 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80';
+
+    card.innerHTML = `
+      <div class="dish-image-wrapper" data-dish-id="${dish.id}">
+        <img class="dish-image" 
+             src="${imgSrc}" 
+             onerror="
+               if (!this.dataset.fallbackApplied) {
+                 this.dataset.fallbackApplied = 'true';
+                 this.src = '${defaultFallback}';
+               }
+             "
+             alt="${dish.name}" 
+             loading="lazy">
+        ${dish.badge ? `<div class="dish-badge">${dish.badge}</div>` : ''}
+        <div class="zoom-hint" title="Agrandir la photo">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            <line x1="11" y1="8" x2="11" y2="14"></line>
+            <line x1="8" y1="11" x2="14" y2="11"></line>
+          </svg>
+        </div>
+      </div>
+      <div class="dish-content">
+        <div class="dish-header">
+          <h3 class="dish-title">${dish.name}</h3>
+          <span class="dish-price">${dish.price} ${RESTAURANT_DATA.info.currency}</span>
+        </div>
+        <p class="dish-desc">${dish.description}</p>
+        ${dish.details ? `<div class="dish-details">${dish.details}</div>` : ''}
+      </div>
+    `;
+
+    const imgWrapper = card.querySelector('.dish-image-wrapper');
+    imgWrapper.addEventListener('click', () => {
+      const currentImg = card.querySelector('.dish-image');
+      openLightbox({
+        ...dish,
+        activeImageSrc: currentImg ? currentImg.src : dish.image
+      });
+    });
+
+    return card;
+  }
+
   function renderDishes() {
     if (!elements.dishesContainer) return;
     elements.dishesContainer.innerHTML = '';
 
     const q = state.searchQuery.toLowerCase().trim();
+
+    const dishMatches = (dish) => {
+      const matchesSearch = !q || 
+        dish.name.toLowerCase().includes(q) || 
+        dish.description.toLowerCase().includes(q) ||
+        (dish.details && dish.details.toLowerCase().includes(q));
+      return matchesSearch;
+    };
 
     // Onglet dédié exclusivement aux Suppléments (présentation en liste épurée sans photo)
     if (state.currentCategory === 'supplements') {
@@ -199,7 +260,11 @@ document.addEventListener('DOMContentLoaded', () => {
           (s.badge && s.badge.toLowerCase().includes(q));
       });
 
-      if (filteredSupplements.length === 0) {
+      const filteredSupplementDish = (RESTAURANT_DATA.dishes || [])
+        .filter(dish => dish.category === 'supplements')
+        .filter(dishMatches);
+
+      if (filteredSupplements.length === 0 && filteredSupplementDish.length === 0) {
         elements.dishesContainer.innerHTML = `
           <div class="no-results">
             <h3>Aucun supplément trouvé</h3>
@@ -209,19 +274,23 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      elements.dishesContainer.appendChild(buildSupplementsElement(filteredSupplements));
+      if (filteredSupplementDish.length > 0) {
+        const grid = document.createElement('div');
+        grid.className = 'dishes-grid supplements-photo-grid';
+        filteredSupplementDish.forEach(dish => grid.appendChild(buildDishCard(dish)));
+        elements.dishesContainer.appendChild(grid);
+      }
+
+      if (filteredSupplements.length > 0) {
+        elements.dishesContainer.appendChild(buildSupplementsElement(filteredSupplements));
+      }
       return;
     }
 
     // Filtrage des plats principaux
     const filtered = RESTAURANT_DATA.dishes.filter(dish => {
       const matchesCategory = state.currentCategory === 'all' || dish.category === state.currentCategory;
-      const matchesSearch = !q || 
-        dish.name.toLowerCase().includes(q) || 
-        dish.description.toLowerCase().includes(q) ||
-        (dish.details && dish.details.toLowerCase().includes(q));
-
-      return matchesCategory && matchesSearch;
+      return matchesCategory && dishMatches(dish);
     });
 
     const matchingSupplements = (state.currentCategory === 'all' && RESTAURANT_DATA.supplements) 
@@ -246,60 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (filtered.length > 0) {
       const grid = document.createElement('div');
       grid.className = 'dishes-grid';
-
-      filtered.forEach(dish => {
-        const card = document.createElement('div');
-        card.className = 'dish-card';
-
-        // Source exacte de l'image avec cache-buster pour garantir un affichage immédiat sans cache 404
-        const isLocal = dish.image.startsWith('assets/');
-        const imgSrc = isLocal ? `${dish.image}?v=20261109c` : dish.image;
-        const defaultFallback = 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80';
-
-        card.innerHTML = `
-          <div class="dish-image-wrapper" data-dish-id="${dish.id}">
-            <img class="dish-image" 
-                 src="${imgSrc}" 
-                 onerror="
-                   if (!this.dataset.fallbackApplied) {
-                     this.dataset.fallbackApplied = 'true';
-                     this.src = '${defaultFallback}';
-                   }
-                 "
-                 alt="${dish.name}" 
-                 loading="lazy">
-            ${dish.badge ? `<div class="dish-badge">${dish.badge}</div>` : ''}
-            <div class="zoom-hint" title="Agrandir la photo">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"></circle>
-                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                <line x1="11" y1="8" x2="11" y2="14"></line>
-                <line x1="8" y1="11" x2="14" y2="11"></line>
-              </svg>
-            </div>
-          </div>
-          <div class="dish-content">
-            <div class="dish-header">
-              <h3 class="dish-title">${dish.name}</h3>
-              <span class="dish-price">${dish.price} ${RESTAURANT_DATA.info.currency}</span>
-            </div>
-            <p class="dish-desc">${dish.description}</p>
-            ${dish.details ? `<div class="dish-details">${dish.details}</div>` : ''}
-          </div>
-        `;
-
-        const imgWrapper = card.querySelector('.dish-image-wrapper');
-        imgWrapper.addEventListener('click', () => {
-          const currentImg = card.querySelector('.dish-image');
-          openLightbox({
-            ...dish,
-            activeImageSrc: currentImg ? currentImg.src : dish.image
-          });
-        });
-
-        grid.appendChild(card);
-      });
-
+      filtered.forEach(dish => grid.appendChild(buildDishCard(dish)));
       elements.dishesContainer.appendChild(grid);
     }
 
