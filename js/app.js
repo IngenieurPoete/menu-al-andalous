@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="dish-content">
         <div class="dish-header">
           <h3 class="dish-title">${dish.name}</h3>
-          <span class="dish-price">${dish.price} ${RESTAURANT_DATA.info.currency}</span>
+          ${dish.price != null ? `<span class="dish-price">${dish.price} ${RESTAURANT_DATA.info.currency}</span>` : ''}
         </div>
         <p class="dish-desc">${dish.description}</p>
         ${dish.details ? `<div class="dish-details">${dish.details}</div>` : ''}
@@ -337,7 +337,10 @@ document.addEventListener('DOMContentLoaded', () => {
     state.lightboxDish = dish;
     elements.lightboxImg.src = dish.activeImageSrc || dish.image;
     elements.lightboxTitle.textContent = dish.name;
-    elements.lightboxPrice.textContent = `${dish.price} ${RESTAURANT_DATA.info.currency}`;
+    elements.lightboxPrice.hidden = dish.price == null;
+    elements.lightboxPrice.textContent = dish.price == null
+      ? ''
+      : `${dish.price} ${RESTAURANT_DATA.info.currency}`;
     elements.lightboxModal.classList.add('active');
     document.body.style.overflow = 'hidden';
   }

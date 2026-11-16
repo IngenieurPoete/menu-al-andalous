@@ -107,7 +107,6 @@ const RESTAURANT_DATA = {
       id: "accompagnements-au-choix",
       name: "Accompagnements au Choix",
       category: "supplements",
-      price: 15,
       badge: "Au choix",
       image: "assets/dishes/accompagnements-au-choix.jpeg",
       description: "Riz aux petits légumes, légumes sautés, purée maison veloutée ou pommes de terre grillées selon votre préféré.",
@@ -120,7 +119,7 @@ const RESTAURANT_DATA = {
       id: "pastilla-poulet",
       name: "Pastilla Traditionnelle au Poulet",
       category: "starters",
-      price: 65,
+      price: 68,
       badge: "Spécialité Maison",
       image: "assets/dishes/pastilla-poisson.jpeg",
       description: "Feuilleté croustillant doré au four, effiloché de poulet fermier aux amandes torréfiées concassées, cannelle fine et fleur d'oranger, saupoudré de sucre glace.",
@@ -130,7 +129,7 @@ const RESTAURANT_DATA = {
       id: "pastilla-poisson",
       name: "Pastilla aux Fruits de Mer & Poisson",
       category: "starters",
-      price: 78,
+      price: 75,
       badge: "Saveurs Marines",
       image: "assets/dishes/pastilla-poulet.jpeg",
       description: "Feuilleté croustillant généreusement garni de crevettes royales, calamars tendres, filets de poisson blanc et vermicelle de riz en charmoula parfumée.",
@@ -271,8 +270,8 @@ const RESTAURANT_DATA = {
       price: 185,
       badge: "Extra Tendre",
       image: "assets/dishes/filet-mignon2.jpeg",
-      description: "Cœur de filet mignon extra-tendre saisi aux braises, servi avec son délicieux pavé de pomme de terre doré.",
-      details: "Cuisson au choix. 2 accompagnements au choix."
+      description: "Cœur de filet mignon extra-tendre saisi aux braises, servi avec 2 accompagnements au choix.",
+      details: "Cuisson au choix."
     },
     {
       id: "souris-agneau",
@@ -281,7 +280,7 @@ const RESTAURANT_DATA = {
       price: 185,
       badge: "Confite Lente",
       image: "assets/dishes/souris-agneau.jpeg",
-      description: "Généreuse pièce de 500g confite lentement pendant de longues heures jusqu'à ce que la viande se détache délicatement de l'os.",
+      description: "Généreuse pièce de 500g confite lentement pendant de longues heures jusqu'à ce que la viande se détache délicatement de l'os, accompagnée d'un pavé de pomme de terre doré.",
       details: "1 accompagnement au choix. Garniture au choix : 15 DH."
     },
     {
@@ -300,7 +299,7 @@ const RESTAURANT_DATA = {
       category: "steakhouse",
       price: 135,
       badge: "Incontournable",
-      image: "assets/dishes/cotelettes-agneau2.jpeg",
+      image: "assets/dishes/cotelettes-agneau.jpg",
       description: "Côtelettes d'agneau fraîches de notre boucherie, marinées aux fines herbes et grillées à feu vif pour une chair tendre et juteuse.",
       details: "2 accompagnements au choix."
     },
@@ -331,8 +330,8 @@ const RESTAURANT_DATA = {
       price: 75,
       badge: "Léger",
       image: "assets/dishes/emince-poulet.jpeg",
-      description: "Filet de poulet fermier émincé, mariné aux herbes aromatiques et sauté minute.",
-      details: "Accompagné de légumes frais de saison."
+      description: "Filet de poulet mariné, sauté avec des champignons et de la crème fraîche.",
+      details: "Servi avec 2 accompagnements au choix."
     },
 
     // =============================================================
@@ -414,7 +413,7 @@ const RESTAURANT_DATA = {
       category: "brochettes",
       price: 115,
       badge: "Recette Bouchère",
-      image: "assets/dishes/brochettes-saucisse-foie.jpeg",
+      image: "assets/dishes/brochettes-saucisse-foie.jpg",
       description: "Saucisse gourmande au foie et épices fines préparée selon la tradition Al Andalous.",
       details: "2 accompagnements au choix."
     },
@@ -434,12 +433,12 @@ const RESTAURANT_DATA = {
     // =============================================================
     {
       id: "tagine-viande-hachee",
-      name: "Tagine de Viande Hachée aux Œufs",
+      name: "Tagine de Viande Hachée",
       category: "tagines",
       price: 55,
       badge: "Spécialité",
       image: "assets/dishes/tagine-viande-hachee.jpeg",
-      description: "Boulettes de kefta fraîches mijotées dans une délicieuse sauce tomate parfumée à l'ail, coriandre fraîche, cumin et œufs mollets.",
+      description: "Boulettes de kefta fraîches mijotées dans une délicieuse sauce tomate parfumée à l'ail, coriandre fraîche et cumin.",
       details: "Cuit lentement en plat de terre cuite traditionnel marocain, servi avec du bon pain chaud."
     },
     {
@@ -502,7 +501,7 @@ const RESTAURANT_DATA = {
       category: "burgers",
       price: 85,
       badge: "Braisé",
-      image: "assets/dishes/chicken-burger.jpeg",
+      image: "assets/dishes/chicken-burger.jpg",
       description: "Steak de poulet mariné et grillé à la flamme, poivrons rouges rôtis, aïoli moutarde à l'ancienne, laitue, tomates et oignons au vinaigre doux.",
       details: "Servi avec frites dorées."
     },
@@ -512,7 +511,7 @@ const RESTAURANT_DATA = {
       category: "burgers",
       price: 88,
       badge: "Double Steak",
-      image: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/double-burger.jpg",
       description: "2 steaks de viande hachée pur bœuf de notre boucherie, double tranche de cheddar fondant, sauce burger maison, laitue, tomates et oignons grillés.",
       details: "Bun brioché moelleux, servi avec frites dorées."
     },
@@ -546,7 +545,7 @@ const RESTAURANT_DATA = {
       category: "sandwichs",
       price: 85,
       badge: "Nouveauté",
-      image: "https://images.unsplash.com/photo-1621800043295-a73fe2f76e2c?auto=format&fit=crop&w=900&q=80",
+      image: "assets/dishes/chicken-cheese-steak.jpg",
       description: "Filet de poulet grillé, poivrons verts, champignons frais sautés, oignons doux, mayonnaise à l'ancienne et cheddar coulant.",
       details: "Servi avec frites dorées."
     },
@@ -660,7 +659,7 @@ const RESTAURANT_DATA = {
       category: "enfants",
       price: 60,
       badge: "Menu Enfant",
-      image: "assets/dishes/menu-nuggets.jpeg",
+      image: "assets/dishes/menu-nuggets.jpg",
       description: "Nuggets dorés et croustillants de poulet, frites croustillantes, jus d'orange frais ou eau minérale, et cadeau surprise.",
       details: "Réservé aux enfants jusqu'à 12 ans."
     },
@@ -670,7 +669,7 @@ const RESTAURANT_DATA = {
       category: "enfants",
       price: 65,
       badge: "Menu Enfant",
-      image: "assets/dishes/mini-burger.jpeg",
+      image: "assets/dishes/mini-burger.jpg",
       description: "Mini burger à la viande hachée fraîche de notre boucherie, frites croustillantes, boisson au choix et surprise.",
       details: "Réservé aux enfants jusqu'à 12 ans."
     },
@@ -684,7 +683,7 @@ const RESTAURANT_DATA = {
       category: "desserts",
       price: 55,
       badge: "Coup de Cœur",
-      image: "assets/dishes/fondant-chocolat.jpeg",
+      image: "assets/dishes/fondant-chocolat.jpg",
       description: "Gâteau au chocolat noir intense avec son cœur coulant chaud, servi avec une boule de glace artisanale à la vanille de Madagascar.",
       details: "Préparé minute pour un cœur parfaitement coulant."
     },
@@ -694,7 +693,7 @@ const RESTAURANT_DATA = {
       category: "desserts",
       price: 42,
       badge: "Fait Maison",
-      image: "assets/dishes/tiramisu.jpeg",
+      image: "assets/dishes/tiramisu.jpg",
       description: "Biscuits imbibés au café expresso intense, crème mascarpone aérée veloutée et saupoudrage de cacao amer.",
       details: "Recette traditionnelle artisanale faite maison chaque jour."
     },
@@ -714,7 +713,7 @@ const RESTAURANT_DATA = {
       category: "desserts",
       price: 42,
       badge: "Gourmandise",
-      image: "assets/dishes/cheesecake.jpeg",
+      image: "assets/dishes/cheesecake.JPG",
       description: "Base de spéculoos croustillante et crème cheesecake dense et fraîche avec coulis de fruits rouges.",
       details: "Fait maison."
     },
@@ -730,7 +729,7 @@ const RESTAURANT_DATA = {
     },
     {
       id: "creme-brulee",
-      name: "Crème Brûlée à la Vanille Bourbon",
+      name: "Crème Brûlée",
       category: "desserts",
       price: 45,
       badge: "Croustillant & Fondant",
@@ -758,7 +757,7 @@ const RESTAURANT_DATA = {
       category: "boissons",
       price: 28,
       badge: "Vitamines",
-      image: "assets/dishes/jus-detox2.png",
+      image: "assets/dishes/jus-detox.png",
       description: "Concombre croquant, carotte sucrée, betterave rouge et orange pressée.",
       details: "Énergie pure et bienfaits digestifs après vos viandes."
     },
